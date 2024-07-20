@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   application:
-    #    image: go-jenkins-simple:go-micro-0.1.0
+    image: go-jenkins-simple:go-micro
     container_name: go-jenkins-simple
     build:
       context: .

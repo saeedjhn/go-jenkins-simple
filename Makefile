@@ -3,6 +3,6 @@ unit-tests:
 #functional-tests:
 #	go test ./functional_tests/transformer_test.go
 build:
-	docker-compose build
+	docker build . -t go-jenkins-simple:go-micro
 run:
 	docker-compose up
