@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   app:
-    image: go-jenkins-simple/go-micro
+    image: go-jenkins-simple:go-micro-0.1.0
     networks:
       - go-jenkins-simple_network
     container_name: go-jenkins-simple
