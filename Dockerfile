@@ -9,7 +9,7 @@ RUN go mod download && go mod verify
 
 COPY *.go ./
 
-RUN go build -o /app/maradona
+RUN go build -o /app/main
 
 # Runtime Stage
 FROM alpine:3.15

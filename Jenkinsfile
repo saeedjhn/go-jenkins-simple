@@ -2,9 +2,6 @@ pipeline {
 
     agent any
 
-//     tools {
-// //         go 'go1.22'
-//     }
     environment {
         GO114MODULE = 'on'
         CGO_ENABLED = 0
@@ -28,32 +25,21 @@ pipeline {
             steps {
                 echo 'BUILD EXECUTION STARTED'
                 sh 'go version'
-                sh 'go get ./...'
-                sh 'docker build . -t go-jenkins-simple/go-micro'
+                sh 'make build'
             }
         }
-//         stage("server-running") {
-//             steps {
-//                 echo 'SERVER RUNNING STARTED'
-//                 sh 'go version'
-//                 sh 'go get ./...'
-//                 sh 'docker build . -t go-jenkins-simple/go-micro'
-//             }
-//         }
         stage("deploy") {
             steps {
                 echo 'DEFINE YOUR DEPLOYMENT SCRIPT!'
+                sh 'make run'
             }
         }
-
 //         stage('Docker Push') {
-//             agent any
 //             steps {
 //                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
 //                 sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
 //                 sh 'docker push go-jenkins-simple/go-micro'
 //                 }
 //             }
-        }
     }
 }

@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    image: go-jenkins-simple/go-micro
+    networks:
+      - go-jenkins-simple_network
+    container_name: go-jenkins-simple
+    ports:
+      - 8000:8000
+    environment:
+      HTTP_PORT: 8000
+
+networks:
+  go-jenkins-simple_network:
