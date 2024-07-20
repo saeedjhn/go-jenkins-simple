@@ -32,14 +32,28 @@ pipeline {
                 sh 'docker build . -t go-jenkins-simple/go-micro'
             }
         }
-        stage('Docker Push') {
-            agent any
+//         stage("server-running") {
+//             steps {
+//                 echo 'SERVER RUNNING STARTED'
+//                 sh 'go version'
+//                 sh 'go get ./...'
+//                 sh 'docker build . -t go-jenkins-simple/go-micro'
+//             }
+//         }
+        stage("deploy") {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
-                sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
-                sh 'docker push go-jenkins-simple/go-micro'
-                }
+                echo 'DEFINE YOUR DEPLOYMENT SCRIPT!'
             }
+        }
+
+//         stage('Docker Push') {
+//             agent any
+//             steps {
+//                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
+//                 sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
+//                 sh 'docker push go-jenkins-simple/go-micro'
+//                 }
+//             }
         }
     }
 }
