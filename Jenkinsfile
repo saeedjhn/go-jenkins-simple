@@ -7,8 +7,12 @@ pipeline {
         CGO_ENABLED = 0
         GOPATH = "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_ID}"
     }
-
     stages {
+        stage('Checkout') {
+                steps {
+                    git 'https://github.com/saeedjhn/go-jenkins-simple.git'
+                }
+        }
         stage("unit-test") {
             steps {
                 echo 'UNIT TEST EXECUTION STARTED'
@@ -28,12 +32,7 @@ pipeline {
                 sh 'make build'
             }
         }
-        stage("deploy") {
-            steps {
-                echo 'DEFINE YOUR DEPLOYMENT SCRIPT!'
-                sh 'make run'
-            }
-        }
+
 //         stage('Docker Push') {
 //             steps {
 //                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubPassword', usernameVariable: 'dockerhubUser')]) {
@@ -41,5 +40,11 @@ pipeline {
 //                 sh 'docker push go-jenkins-simple/go-micro'
 //                 }
 //             }
+        stage("deploy") {
+            steps {
+                echo 'DEFINE YOUR DEPLOYMENT SCRIPT!'
+                sh 'make run'
+            }
+        }
     }
 }
