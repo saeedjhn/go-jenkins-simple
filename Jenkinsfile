@@ -2,9 +2,9 @@ pipeline {
 
     agent any
 
-    tools {
-//         go 'go1.22'
-    }
+//     tools {
+// //         go 'go1.22'
+//     }
     environment {
         GO114MODULE = 'on'
         CGO_ENABLED = 0
