@@ -22,7 +22,8 @@ func main() {
 
 func healthCheck(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, echo.Map{
-		"message": "--- OK ---",
+		"message":  "--- OK ---",
+		"message2": "--- OK2 ___",
 	})
 }
 
