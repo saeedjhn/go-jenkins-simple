@@ -3,7 +3,7 @@ version: "3.9"
 services:
   app:
 #    image: go-jenkins-simple:go-micro
-    container_name: go-jenkins-simple
+    container_name: go-jenkins
     build:
       context: .
     ports:
